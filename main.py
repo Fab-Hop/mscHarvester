@@ -28,7 +28,7 @@ def run(
         for row in r:
             row.fieldnames = fieldnames
             added = row.writerow(w, only_complete)
-            if i > max_records:
+            if max_records > 0 and i > max_records:
                 return
             elif added:
                 i += 1
@@ -38,4 +38,4 @@ def run(
 
 
 if __name__ == "__main__":
-    run()
+    run(0, "out.csv", 1000, False)
